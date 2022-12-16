@@ -93,6 +93,7 @@ bindsym $mod+0    workspace  $ws10
 #bindcode $mod+81 workspace $ws9
 #bindcode $mod+90 workspace $ws10
 
+# Focus using numpad keys
 bindcode $mod+88 focus down
 bindcode $mod+83 focus left
 bindcode $mod+85 focus right
@@ -145,22 +146,24 @@ bindcode $mod+Shift+Mod2+90 	move container to workspace  $ws10
 #bindcode $mod+Shift+80 	 move container to workspace  $ws8
 #bindcode $mod+Shift+81 	 move container to workspace  $ws9
 #bindcode $mod+Shift+90 	 move container to workspace  $ws10
+
+# move container with numpad
 bindcode $mod+Shift+88 move down
 bindcode $mod+Shift+83 move left
 bindcode $mod+Shift+85 move right
 bindcode $mod+Shift+80 move up
 
 # resize window (you can also use the mouse for that):
-#mode "resize" {
-# These bindings trigger as soon as you enter the resize mode
-# Pressing left will shrink the window's width.
-# Pressing right will grow the window's width.
-# Pressing up will shrink the window's height.
-# Pressing down will grow the window's height.
-#        bindsym j resize shrink width 10 px or 10 ppt
-#        bindsym k resize grow height 10 px or 10 ppt
-#        bindsym l resize shrink height 10 px or 10 ppt
-#        bindsym ntilde resize grow width 10 px or 10 ppt
+mode "resize" {
+ #These bindings trigger as soon as you enter the resize mode
+ #Pressing left will shrink the window's width.
+ #Pressing right will grow the window's width.
+ #Pressing up will shrink the window's height.
+ #Pressing down will grow the window's height.
+        bindsym l resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym h resize grow width 10 px or 10 ppt
 
 # same bindings, but for the arrow keys
 #	bindsym Left resize shrink width 10 px or 10 ppt
@@ -168,12 +171,12 @@ bindcode $mod+Shift+80 move up
 #        bindsym Up resize shrink height 10 px or 10 ppt
 #        bindsym Right resize grow width 10 px or 10 ppt
 
-# back to normal: Enter or Escape
-#	bindsym Return mode "default"
-#        bindsym Escape mode "default"
-#}
+ #back to normal: Enter or Escape
+	bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
 
-#bindsym $mod+r mode "resize"
+bindsym $mod+r mode "resize"
 
 ######################################
 # keybindings for different actions: #
@@ -212,7 +215,7 @@ bindsym XF86MonBrightnessUp exec brightness --inc
 bindsym XF86MonBrightnessDown exec brightness --dec  
 
 # change focus
-#bindsym $mod+h focus left
+bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
@@ -236,7 +239,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+#bindsym $mod+h split h
+bindsym $mod+c split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -309,7 +313,17 @@ set $ws10 "10:X"
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
 # you can get from xrandr command
-#workspace $ws1 output VGA-0
+workspace $ws1 output eDP
+workspace $ws3 output eDP
+workspace $ws5 output eDP
+workspace $ws7 output eDP
+workspace $ws9 output eDP
+
+workspace $ws2 output  HDMI-A-0
+workspace $ws4 output  HDMI-A-0
+workspace $ws6 output  HDMI-A-0
+workspace $ws8 output  HDMI-A-0
+workspace $ws10 output HDMI-A-0
 #workspace $ws2 output VGA-0
 #workspace $ws3 output HDMI-0
 #workspace $ws4 output HDMI-0
@@ -461,7 +475,7 @@ for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="qt5ct" instance="qt5ct"] floating enable
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
-for_window [class="Pamac-manager"] floating enable
+#for_window [class="Pamac-manager"] floating enable
 for_window [window_role="About"] floating enable
 
 # set border of floating window
@@ -580,8 +594,8 @@ bindsym $mod+d exec ~/.config/rofi/launcher/launcher.sh
 
 ## rofi bindings for window menu ($mod+t /F10 optional disabled)
 
-bindsym $mod+t exec rofi -show window \
-		-config ~/.config/rofi/rofidmenu.rasi
+#bindsym $mod+t exec rofi -show window \
+		#-config ~/.config/rofi/rofidmenu.rasi
 
 #bindsym F10 exec rofi -show window \
 #		-config ~/.config/rofi/rofidmenu.rasi
